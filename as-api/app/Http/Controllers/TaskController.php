@@ -7,8 +7,7 @@ use App\Model\Task as Task;
 
 class TaskController extends Controller
 {
-    public function index()
-    {
+    public function index(){
 
         return Event::all();
 

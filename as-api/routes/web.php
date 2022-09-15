@@ -2,16 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get("lists",function(){
+    $events = [
+        [
+            "id" => 1,
+            "name" => "Magia do Natal",
+            "dtEvent" => '2022-12-24'
+        ],
+        [
+            "id" => 1,
+            "name" => "Festival de Inverno",
+            "dtEvent" => '2022-07-10'
+        ]
+    ];
+    return $events;
+});
 
 Route::get('/', function () {
     return view('welcome');
