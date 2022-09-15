@@ -23,5 +23,8 @@ Route::get("lists",function(){
     return $events;
 });
 
-Route::get("events", [EventController::class,"index"]);
-Route::get("store",[EventController::class,"store"]);
+Route::get("events",[EventController::class,"index"]);
+Route::get("events/{event}", [EventController::class,"show"]);
+Route::post("events", [EventController::class,"store"]);
+Route::patch("events/{event}", [EventController::class,"update"]);
+Route::delete("events/{event}", [EventController::class,"destroy"]);
