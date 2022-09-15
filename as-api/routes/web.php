@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get("lists",function(){
     $events = [
@@ -10,7 +15,7 @@ Route::get("lists",function(){
             "dtEvent" => '2022-12-24'
         ],
         [
-            "id" => 1,
+            "id" => 2,
             "name" => "Festival de Inverno",
             "dtEvent" => '2022-07-10'
         ]
@@ -18,6 +23,5 @@ Route::get("lists",function(){
     return $events;
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("events", [EventController::class,"index"]);
+Route::get("store",[EventController::class,"store"]);

@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Task as Task;
+use App\Models\Event as Event;
 
-class TaskController extends Controller
+class EventController extends Controller
 {
     public function index(){
-
         return Event::all();
-
     }
 
     public function store(Request $request)
     {
+        //return $request;
 
         $request->validate([
             'name'=>'required|max:255',
@@ -32,24 +31,17 @@ class TaskController extends Controller
 
     public function show(Event $event)
     {
-
         return $event;
-
     }
 
     public function update(Request $request, Event $event)
     {
-
         $request->validate([
             'name'=>'required|max:255'
         ]);
-
         $event->name = $request->input('name');
-
         $event->save();
-
         return $event;
-
     }
 
     public function destroy(Event $event)
