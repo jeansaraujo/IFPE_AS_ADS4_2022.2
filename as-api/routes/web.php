@@ -22,9 +22,15 @@ Route::get("lists",function(){
     ];
     return $events;
 });
-
 Route::get("events",[EventController::class,"index"]);
-Route::get("events/{event}", [EventController::class,"show"]);
-Route::post("events", [EventController::class,"store"]);
-Route::patch("events/{event}", [EventController::class,"update"]);
-Route::delete("events/{event}", [EventController::class,"destroy"]);
+Route::get("store", [EventController::class,"store"]);
+Route::get("update", [EventController::class,"update"]);
+Route::get("delete/{id}", [EventController::class,"destroy"]);
+
+/**
+*Route::get("events",[EventController::class,"index"]);
+*Route::get("events/{event}", [EventController::class,"show"]);
+*Route::post("store", [EventController::class,"store"]);
+*Route::patch("events/{event}", [EventController::class,"update"]);
+*Route::delete("events/{event}", [EventController::class,"destroy"]);
+ */

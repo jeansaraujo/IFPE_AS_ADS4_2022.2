@@ -13,20 +13,11 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        //return $request;
-
-        $request->validate([
-            'name'=>'required|max:255',
-            'complete'=>'required'
-        ]);
-
-        $event = Event::create([
-            'name'=>$request->input('name'),
-            'complete'=>$request->input('complete')
-        ]);
-
+        $event = new Event();
+        $event->name = $request->name;
+        $event->dtevent = $request->dtevent;
+        $event->save();
         return $event;
-
     }
 
     public function show(Event $event)
@@ -34,22 +25,20 @@ class EventController extends Controller
         return $event;
     }
 
-    public function update(Request $request, Event $event)
+    public function update(Request $request)
     {
-        $request->validate([
-            'name'=>'required|max:255'
-        ]);
-        $event->name = $request->input('name');
+        $event = Event::find($request->id);
+        $event->name = $request->name;
         $event->save();
-        return $event;
+        $events = Event::all();
+        return $events;
     }
 
-    public function destroy(Event $event)
+    public function destroy($event)
     {
-
+        $event = Event::find($event);
         $event->delete();
-
-        return response()->json(['success'=>true]);
-
+        $events = Event::all();
+        return $events;
     }
 }
